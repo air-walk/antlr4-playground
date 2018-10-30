@@ -7,6 +7,16 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface JSONListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link JSONParser#json}.
+	 * @param ctx the parse tree
+	 */
+	void enterJson(JSONParser.JsonContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JSONParser#json}.
+	 * @param ctx the parse tree
+	 */
+	void exitJson(JSONParser.JsonContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JSONParser#object}.
 	 * @param ctx the parse tree
 	 */
@@ -26,6 +36,16 @@ public interface JSONListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPair(JSONParser.PairContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JSONParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void enterArray(JSONParser.ArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JSONParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void exitArray(JSONParser.ArrayContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JSONParser#value}.
 	 * @param ctx the parse tree

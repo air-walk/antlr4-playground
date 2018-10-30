@@ -15,6 +15,18 @@ public class JSONBaseListener implements JSONListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterJson(JSONParser.JsonContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJson(JSONParser.JsonContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterObject(JSONParser.ObjectContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -34,6 +46,18 @@ public class JSONBaseListener implements JSONListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPair(JSONParser.PairContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArray(JSONParser.ArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArray(JSONParser.ArrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
