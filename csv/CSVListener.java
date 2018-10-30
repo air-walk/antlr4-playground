@@ -17,6 +17,16 @@ public interface CSVListener extends ParseTreeListener {
 	 */
 	void exitFile(CSVParser.FileContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CSVParser#hdr}.
+	 * @param ctx the parse tree
+	 */
+	void enterHdr(CSVParser.HdrContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSVParser#hdr}.
+	 * @param ctx the parse tree
+	 */
+	void exitHdr(CSVParser.HdrContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CSVParser#row}.
 	 * @param ctx the parse tree
 	 */

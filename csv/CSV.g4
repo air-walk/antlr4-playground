@@ -1,12 +1,14 @@
 grammar CSV;
 
-file:  (row '\n')* 			  ;
-row:   field (',' field)* ;
-field: INT 							  ;
+file:  hdr row+					  					 ;
+hdr:   row													 ;
+row:   field (',' field)* '\r'? '\n' ;
+field: TEXT
+		 | STRING
+		 |
+		 ;
 
-INT:   DIGIT+				  		;
 
-fragment
-DIGIT: [0-9]							;
-
-WS: [ \t\r\n]+ -> skip		;
+TEXT: 	~[,\n\r"]+						;
+STRING: '"' ('""'|~'"')* '"'	;
+WS: 		[ \t\r\n]+ -> skip		;

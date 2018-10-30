@@ -27,6 +27,18 @@ public class CSVBaseListener implements CSVListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterHdr(CSVParser.HdrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHdr(CSVParser.HdrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterRow(CSVParser.RowContext ctx) { }
 	/**
 	 * {@inheritDoc}
