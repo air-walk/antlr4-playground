@@ -118,7 +118,6 @@ public class ExprParser extends Parser {
 	}
 
 	public static class EContext extends ParserRuleContext {
-		public Token op;
 		public TerminalNode INT() { return getToken(ExprParser.INT, 0); }
 		public List<EContext> e() {
 			return getRuleContexts(EContext.class);
@@ -180,7 +179,7 @@ public class ExprParser extends Parser {
 						setState(9);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
 						setState(10);
-						((EContext)_localctx).op = match(MULT);
+						match(MULT);
 						setState(11);
 						e(4);
 						}
@@ -192,7 +191,7 @@ public class ExprParser extends Parser {
 						setState(12);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
 						setState(13);
-						((EContext)_localctx).op = match(ADD);
+						match(ADD);
 						setState(14);
 						e(3);
 						}
