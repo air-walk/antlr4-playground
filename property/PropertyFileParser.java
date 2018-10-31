@@ -97,6 +97,11 @@ public class PropertyFileParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof PropertyFileListener ) ((PropertyFileListener)listener).exitFile(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof PropertyFileVisitor ) return ((PropertyFileVisitor<? extends T>)visitor).visitFile(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FileContext file() throws RecognitionException {
@@ -147,6 +152,11 @@ public class PropertyFileParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof PropertyFileListener ) ((PropertyFileListener)listener).exitProp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof PropertyFileVisitor ) return ((PropertyFileVisitor<? extends T>)visitor).visitProp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
