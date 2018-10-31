@@ -118,7 +118,35 @@ public class ExprParser extends Parser {
 	}
 
 	public static class EContext extends ParserRuleContext {
-		public TerminalNode INT() { return getToken(ExprParser.INT, 0); }
+		public EContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_e; }
+	 
+		public EContext() { }
+		public void copyFrom(EContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class AddContext extends EContext {
+		public List<EContext> e() {
+			return getRuleContexts(EContext.class);
+		}
+		public EContext e(int i) {
+			return getRuleContext(EContext.class,i);
+		}
+		public TerminalNode ADD() { return getToken(ExprParser.ADD, 0); }
+		public AddContext(EContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterAdd(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitAdd(this);
+		}
+	}
+	public static class MultContext extends EContext {
 		public List<EContext> e() {
 			return getRuleContexts(EContext.class);
 		}
@@ -126,18 +154,26 @@ public class ExprParser extends Parser {
 			return getRuleContext(EContext.class,i);
 		}
 		public TerminalNode MULT() { return getToken(ExprParser.MULT, 0); }
-		public TerminalNode ADD() { return getToken(ExprParser.ADD, 0); }
-		public EContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_e; }
+		public MultContext(EContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterE(this);
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterMult(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitE(this);
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitMult(this);
+		}
+	}
+	public static class IntContext extends EContext {
+		public TerminalNode INT() { return getToken(ExprParser.INT, 0); }
+		public IntContext(EContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterInt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitInt(this);
 		}
 	}
 
@@ -157,6 +193,10 @@ public class ExprParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			{
+			_localctx = new IntContext(_localctx);
+			_ctx = _localctx;
+			_prevctx = _localctx;
+
 			setState(7);
 			match(INT);
 			}
@@ -174,7 +214,7 @@ public class ExprParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 					case 1:
 						{
-						_localctx = new EContext(_parentctx, _parentState);
+						_localctx = new MultContext(new EContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_e);
 						setState(9);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
@@ -186,7 +226,7 @@ public class ExprParser extends Parser {
 						break;
 					case 2:
 						{
-						_localctx = new EContext(_parentctx, _parentState);
+						_localctx = new AddContext(new EContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_e);
 						setState(12);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");

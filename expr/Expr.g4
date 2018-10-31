@@ -1,9 +1,9 @@
 grammar Expr;
 
 s : e ;
-e : e MULT e
-  | e ADD e
-  | INT
+e : e MULT e    # Mult
+  | e ADD e     # Add
+  | INT         # Int
   ;
 
 MULT: '*'   ;

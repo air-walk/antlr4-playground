@@ -17,13 +17,39 @@ public interface ExprListener extends ParseTreeListener {
 	 */
 	void exitS(ExprParser.SContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ExprParser#e}.
+	 * Enter a parse tree produced by the {@code Add}
+	 * labeled alternative in {@link ExprParser#e}.
 	 * @param ctx the parse tree
 	 */
-	void enterE(ExprParser.EContext ctx);
+	void enterAdd(ExprParser.AddContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ExprParser#e}.
+	 * Exit a parse tree produced by the {@code Add}
+	 * labeled alternative in {@link ExprParser#e}.
 	 * @param ctx the parse tree
 	 */
-	void exitE(ExprParser.EContext ctx);
+	void exitAdd(ExprParser.AddContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Mult}
+	 * labeled alternative in {@link ExprParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void enterMult(ExprParser.MultContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Mult}
+	 * labeled alternative in {@link ExprParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void exitMult(ExprParser.MultContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Int}
+	 * labeled alternative in {@link ExprParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void enterInt(ExprParser.IntContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Int}
+	 * labeled alternative in {@link ExprParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void exitInt(ExprParser.IntContext ctx);
 }
